@@ -1,0 +1,51 @@
+<!-- generator.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <title>Password Generator</title>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>Password Generator</h1>
+        <form method="POST" action="{% url 'generator' %}">
+            {% csrf_token %}
+            <select name="length">
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12" selected="selected">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+            </select> length
+            <br>
+            <input type="checkbox" name="uppercase" value="1"> Uppercase
+            <br>
+            <input type="checkbox" name="specialcharacter" value="1"> Special Character
+            <br>
+            <input type="checkbox" name="number" value="1"> Number
+            <br>
+            <input type="submit" name="generate" value="Generate Password" class="btn btn-primary">
+        </form>
+
+        <div class="container text-center">
+            {% if password %}
+            <h1 class="alert alert-success mt-6">{{ password }}</h1>
+            {% endif %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
